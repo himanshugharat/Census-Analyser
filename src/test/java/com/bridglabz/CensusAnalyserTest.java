@@ -103,5 +103,15 @@ public class CensusAnalyserTest {
         }
     }
 
-
+    @Test
+    public void givenIndiaStateData_WithWrongDelimiter_ShouldThrowException() {
+        try {
+            CensusAnalyser censusAnalyser = new CensusAnalyser();
+            ExpectedException exceptionRule = ExpectedException.none();
+            exceptionRule.expect(CensusAnalyserException.class);
+            censusAnalyser.loadIndiaStateData(CSV_FILE_WITH_WRONG_HEADER_PATH);
+        } catch (CensusAnalyserException e) {
+            Assert.assertEquals(CensusAnalyserException.ExecptionType.FILE_HEADER_OR_DELIMITER_PROBLEM, e.type);
+        }
+    }
 }
