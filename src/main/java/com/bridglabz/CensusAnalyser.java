@@ -2,7 +2,6 @@ package com.bridglabz;
 
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
-
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -29,7 +28,7 @@ public class CensusAnalyser {
                     CensusAnalyserException.ExecptionType.CENSUS_FILE_PROBLEM);
         } catch (RuntimeException e) {
             throw new CensusAnalyserException(e.getMessage(),
-                    CensusAnalyserException.ExecptionType.FILE_TYPE_PROBLEM);
+                    CensusAnalyserException.ExecptionType.FILE_TYPE_OR_DELIMITER_PROBLEM);
         }
 
 

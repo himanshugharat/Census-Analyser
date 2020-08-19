@@ -39,7 +39,19 @@ public class CensusAnalyserTest {
             exceptionRule.expect(CensusAnalyserException.class);
             censusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
         } catch (CensusAnalyserException e) {
-            Assert.assertEquals(CensusAnalyserException.ExecptionType.FILE_TYPE_PROBLEM, e.type);
+            Assert.assertEquals(CensusAnalyserException.ExecptionType.FILE_TYPE_OR_DELIMITER_PROBLEM, e.type);
+        }
+    }
+
+    @Test
+    public void givenIndiaCensusData_WithWrongDelimiter_ShouldThrowException() {
+        try {
+            CensusAnalyser censusAnalyser = new CensusAnalyser();
+            ExpectedException exceptionRule = ExpectedException.none();
+            exceptionRule.expect(CensusAnalyserException.class);
+            censusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
+        } catch (CensusAnalyserException e) {
+            Assert.assertEquals(CensusAnalyserException.ExecptionType.FILE_TYPE_OR_DELIMITER_PROBLEM, e.type);
         }
     }
 }
