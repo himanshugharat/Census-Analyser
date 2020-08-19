@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridglabz.CensusAnalyserTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-08-19T09:43:50" hostname="DESKTOP-GL7D8LT" time="0.192">
+<testsuite name="com.bridglabz.CensusAnalyserTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-08-19T09:49:41" hostname="DESKTOP-GL7D8LT" time="0.226">
   <properties/>
-  <testcase name="givenIndiaStateData_WithWrongDelimiter_ShouldThrowException" classname="com.bridglabz.CensusAnalyserTest" time="0.192">
+  <testcase name="givenIndiaStateData_WithWrongHeader_ShouldThrowException" classname="com.bridglabz.CensusAnalyserTest" time="0.226">
     <failure message="java.lang.AssertionError: expected:&lt;FILE_HEADER_OR_DELIMITER_PROBLEM&gt; but was:&lt;FILE_TYPE_PROBLEM&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;FILE_HEADER_OR_DELIMITER_PROBLEM&gt; but was:&lt;FILE_TYPE_PROBLEM&gt;
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
 	at org.junit.Assert.assertEquals(Assert.java:118)
 	at org.junit.Assert.assertEquals(Assert.java:144)
-	at com.bridglabz.CensusAnalyserTest.givenIndiaStateData_WithWrongDelimiter_ShouldThrowException(CensusAnalyserTest.java:113)
+	at com.bridglabz.CensusAnalyserTest.givenIndiaStateData_WithWrongHeader_ShouldThrowException(CensusAnalyserTest.java:125)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
