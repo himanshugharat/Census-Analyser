@@ -10,8 +10,7 @@ public class CensusAnalyserTest {
     private static final String CSV_FILE_WITH_WRONG_HEADER_PATH = ".\\src\\test\\resources\\Delimiter.csv";
     private static final String CSV_FILE_WITH_WRONG_TYPE_PATH = ".\\src\\test\\resources\\file.txt";
     private static final String INDIA_STATE_CSV_FILE_PATH = ".\\src\\test\\resources\\IndiaStateCode.csv";
-
-
+    
     @Test
     public void givenIndianCensusCsvFile_WhenCheked_ReturnCorrectRecords() {
         try {
