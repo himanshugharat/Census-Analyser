@@ -20,11 +20,8 @@ public class CensusAnalyser {
             CsvToBean<IndiaStateCodeCSV> csvToBean = csvToBeanBuilder.build();
             Iterator<IndiaStateCodeCSV> censusCSVIterator = csvToBean.iterator();
             int namOfEateries = 0;
-            while (censusCSVIterator.hasNext()) {
-                namOfEateries++;
-                IndiaStateCodeCSV censusData = censusCSVIterator.next();
-            }
-            return namOfEateries;
+            Iterable<IndiaStateCodeCSV> csvIterable = () -> censusCSVIterator;
+            return (int) StreamSupport.stream(csvIterable.spliterator(), false).count();
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
                     CensusAnalyserException.ExecptionType.CENSUS_FILE_PROBLEM);
