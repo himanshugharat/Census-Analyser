@@ -26,9 +26,12 @@ public class CensusAnalyser {
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
                     CensusAnalyserException.ExecptionType.CENSUS_FILE_PROBLEM);
-        } catch (RuntimeException e) {
+        }catch (IllegalStateException e) {
             throw new CensusAnalyserException(e.getMessage(),
-                    CensusAnalyserException.ExecptionType.FILE_TYPE_OR_DELIMITER_PROBLEM);
+                    CensusAnalyserException.ExecptionType.FILE_HEADER_OR_DELIMITER_PROBLEM);
+        }catch (RuntimeException e) {
+            throw new CensusAnalyserException(e.getMessage(),
+                    CensusAnalyserException.ExecptionType.FILE_TYPE_PROBLEM);
         }
 
 
