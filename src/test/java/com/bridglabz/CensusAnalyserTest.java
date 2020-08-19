@@ -78,6 +78,7 @@ public class CensusAnalyserTest {
         } catch (CensusAnalyserException e) {
         }
     }
+
     @Test
     public void givenIndiaStateData_WithWrongFile_ShouldThrowException() {
         try {
@@ -90,5 +91,5 @@ public class CensusAnalyserTest {
         }
     }
 
-    
+
 }
