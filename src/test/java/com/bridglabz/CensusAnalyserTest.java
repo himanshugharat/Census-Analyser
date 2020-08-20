@@ -145,6 +145,7 @@ public class CensusAnalyserTest {
         IndiaCensusCSV[] CensusCSV = new Gson().fromJson(sortedCensusData, IndiaCensusCSV[].class);
         Assert.assertEquals(607688, CensusCSV[0].population);
     }
+
     @Test
     public void givenIndianCensusData_WhenSortedOnDensityPerKm_ShouldReturnSortedResult() throws CensusAnalyserException {
         CensusAnalyser censusAnalyser = new CensusAnalyser();
@@ -152,5 +153,14 @@ public class CensusAnalyserTest {
         String sortedCensusData = censusAnalyser.getPopulationWiseSortedCensusData();
         IndiaCensusCSV[] CensusCSV = new Gson().fromJson(sortedCensusData, IndiaCensusCSV[].class);
         Assert.assertEquals(86, CensusCSV[0].densityPerSqKm);
+    }
+
+    @Test
+    public void givenIndianCensusData_WhenSortedOnAreaPerSQKM_ShouldReturnSortedResult() throws CensusAnalyserException {
+        CensusAnalyser censusAnalyser = new CensusAnalyser();
+        censusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
+        String sortedCensusData = censusAnalyser.getPopulationWiseSortedCensusData();
+        IndiaCensusCSV[] CensusCSV = new Gson().fromJson(sortedCensusData, IndiaCensusCSV[].class);
+        Assert.assertEquals(7096, CensusCSV[0].areaInSqKm);
     }
 }
