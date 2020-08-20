@@ -6,7 +6,10 @@ public class CensusAnalyserException extends Exception {
     }
 
     ExecptionType type;
-
+    public CensusAnalyserException(String message, String name) {
+        super(message);
+        this.type = ExecptionType.valueOf(name);
+    }
     public CensusAnalyserException(String message, ExecptionType type) {
         super(message);
         this.type = type;
