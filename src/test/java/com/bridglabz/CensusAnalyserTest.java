@@ -163,4 +163,13 @@ public class CensusAnalyserTest {
         IndiaCensusCSV[] CensusCSV = new Gson().fromJson(sortedCensusData, IndiaCensusCSV[].class);
         Assert.assertEquals(7096, CensusCSV[0].areaInSqKm);
     }
+
+    @Test
+    public void givenIndianCensusData_WhenFileIsEmptyOrNoDataInList_ShouldReturnException()  {
+        try{CensusAnalyser censusAnalyser = new CensusAnalyser();
+        String sortedCensusData = censusAnalyser.getPopulationWiseSortedCensusData();
+        IndiaCensusCSV[] CensusCSV = new Gson().fromJson(sortedCensusData, IndiaCensusCSV[].class);
+    }catch (CensusAnalyserException e){
+            Assert.assertEquals(CensusAnalyserException.ExecptionType.NO_DATA,e.type);
+        }}
 }
