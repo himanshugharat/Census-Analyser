@@ -3,6 +3,7 @@ package com.bridglabz;
 import com.google.gson.Gson;
 import customcsv.util.CSVBuilderException;
 import customcsv.util.ICSVBuilder;
+
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -32,7 +33,6 @@ public class CensusAnalyser {
             throw new CensusAnalyserException(e.getMessage(),
                     e.type.name());
         }
-
     }
 
     public int loadIndiaStateData(String csvFilePath) throws CensusAnalyserException {
@@ -66,8 +66,6 @@ public class CensusAnalyser {
         Collections.sort(censusCSVList, censusCSVComparator);
         String sortedStateJsonCensus = new Gson().toJson(censusCSVList);
         return sortedStateJsonCensus;
-
-
     }
 
     public String getPopulationWiseSortedCensusData() throws CensusAnalyserException {
@@ -78,8 +76,6 @@ public class CensusAnalyser {
         Collections.sort(censusCSVList, censusCSVComparator);
         String sortedStateJsonCensus = new Gson().toJson(censusCSVList);
         return sortedStateJsonCensus;
-
-
     }
 
 
