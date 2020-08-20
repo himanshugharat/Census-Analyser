@@ -115,6 +115,7 @@ public class CensusAnalyserTest {
             Assert.assertEquals(CensusAnalyserException.ExecptionType.FILE_HEADER_OR_DELIMITER_PROBLEM, e.type);
         }
     }
+
     @Test
     public void givenIndiaStateData_WithWrongHeader_ShouldThrowException() {
         try {
@@ -131,9 +132,8 @@ public class CensusAnalyserTest {
     public void givenIndianCensusData_WhenSortedOnState_ShouldReturnSortedResult() throws CensusAnalyserException {
         CensusAnalyser censusAnalyser = new CensusAnalyser();
         censusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
-        String sortedCensusData=censusAnalyser.getStateWiseSortedCensusData();
-        IndiaCensusCSV[] CensusCSV = new Gson().fromJson(sortedCensusData,IndiaCensusCSV[].class);
+        String sortedCensusData = censusAnalyser.getStateWiseSortedCensusData();
+        IndiaCensusCSV[] CensusCSV = new Gson().fromJson(sortedCensusData, IndiaCensusCSV[].class);
         Assert.assertEquals("Andhra Pradesh", CensusCSV[0].state);
-
     }
 }

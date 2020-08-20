@@ -2,14 +2,16 @@ package com.bridglabz;
 
 public class CensusAnalyserException extends Exception {
     enum ExecptionType {
-        CENSUS_FILE_PROBLEM, FILE_TYPE_PROBLEM, FILE_HEADER_OR_DELIMITER_PROBLEM,NO_DATA
+        CENSUS_FILE_PROBLEM, FILE_TYPE_PROBLEM, FILE_HEADER_OR_DELIMITER_PROBLEM, NO_DATA
     }
 
     ExecptionType type;
+
     public CensusAnalyserException(String message, String name) {
         super(message);
         this.type = ExecptionType.valueOf(name);
     }
+
     public CensusAnalyserException(String message, ExecptionType type) {
         super(message);
         this.type = type;

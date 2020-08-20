@@ -3,7 +3,6 @@ package com.bridglabz;
 import com.google.gson.Gson;
 import customcsv.util.CSVBuilderException;
 import customcsv.util.ICSVBuilder;
-
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -15,7 +14,8 @@ import java.util.List;
 import java.util.stream.StreamSupport;
 
 public class CensusAnalyser {
-    List<IndiaCensusCSV> censusCSVList=null;
+    List<IndiaCensusCSV> censusCSVList = null;
+
     public int loadIndiaCensusData(String csvFilePath) throws CensusAnalyserException {
         try {
             Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
@@ -59,13 +59,25 @@ public class CensusAnalyser {
     }
 
     public String getStateWiseSortedCensusData() throws CensusAnalyserException {
-        if(censusCSVList==null||censusCSVList.size()==0) {
-            throw new CensusAnalyserException("no data ",CensusAnalyserException.ExecptionType.NO_DATA);
+        if (censusCSVList == null || censusCSVList.size() == 0) {
+            throw new CensusAnalyserException("no data ", CensusAnalyserException.ExecptionType.NO_DATA);
         }
-            Comparator<IndiaCensusCSV> censusCSVComparator = Comparator.comparing((census -> census.state));
-            Collections.sort(censusCSVList, censusCSVComparator);
-            String sortedStateJsonCensus = new Gson().toJson(censusCSVList);
-            return sortedStateJsonCensus;
+        Comparator<IndiaCensusCSV> censusCSVComparator = Comparator.comparing((census -> census.state));
+        Collections.sort(censusCSVList, censusCSVComparator);
+        String sortedStateJsonCensus = new Gson().toJson(censusCSVList);
+        return sortedStateJsonCensus;
+
+
+    }
+
+    public String getPopulationWiseSortedCensusData() throws CensusAnalyserException {
+        if (censusCSVList == null || censusCSVList.size() == 0) {
+            throw new CensusAnalyserException("no data ", CensusAnalyserException.ExecptionType.NO_DATA);
+        }
+        Comparator<IndiaCensusCSV> censusCSVComparator = Comparator.comparing((census -> census.population));
+        Collections.sort(censusCSVList, censusCSVComparator);
+        String sortedStateJsonCensus = new Gson().toJson(censusCSVList);
+        return sortedStateJsonCensus;
 
 
     }
