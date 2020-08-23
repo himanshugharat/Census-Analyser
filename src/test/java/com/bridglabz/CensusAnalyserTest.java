@@ -11,7 +11,7 @@ public class CensusAnalyserTest {
     private static final String CSV_FILE_WITH_WRONG_HEADER_PATH = ".\\src\\test\\resources\\Delimiter.csv";
     private static final String CSV_FILE_WITH_WRONG_TYPE_PATH = ".\\src\\test\\resources\\file.txt";
     private static final String INDIA_STATE_CSV_FILE_PATH = ".\\src\\test\\resources\\IndiaStateCode.csv";
-    private static final String US_CENSUS_CSV_FILE_PATH = ".\\src\\test\\resources\\USCensusCode.csv";
+    private static final String US_CENSUS_CSV_FILE_PATH = ".\\src\\test\\resources\\USCensusData.csv";
 
 
     @Test
@@ -185,5 +185,14 @@ public class CensusAnalyserTest {
             Assert.assertEquals(51, numberOfRecords);
         } catch (CensusAnalyserException e) {
         }
+    }
+
+    @Test
+    public void givenUSCensusData_WhenSortedOnPopulation_ShouldReturnSortedResult() throws CensusAnalyserException {
+        CensusAnalyser censusAnalyser = new CensusAnalyser();
+        censusAnalyser.loadUSCensusData(US_CENSUS_CSV_FILE_PATH);
+        String sortedCensusData = censusAnalyser.getPopulationWiseSortedUSCensusData();
+        USCensusCSV[] CensusCSV = new Gson().fromJson(sortedCensusData, USCensusCSV[].class);
+        Assert.assertEquals("1052567", CensusCSV[0].population);
     }
 }
