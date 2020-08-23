@@ -7,4 +7,8 @@ public class CSVBuilderFactory {
     public static ICSVBuilder createCSVBuilder() {
         return new OpenCSVBuilder();
     }
+    public static OpenCSVBuilder getCSVBean(){
+        return new OpenCSVBuilder();
+
+    }
 }

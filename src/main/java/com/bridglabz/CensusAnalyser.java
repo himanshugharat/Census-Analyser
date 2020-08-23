@@ -1,22 +1,27 @@
 package com.bridglabz;
 
 import com.google.gson.Gson;
+import com.opencsv.bean.CsvToBean;
 import customcsv.util.CSVBuilderException;
 import customcsv.util.ICSVBuilder;
+import customcsv.util.OpenCSVBuilder;
+import customcsv.util.OpenCSVBuilder.*;
 
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.attribute.UserDefinedFileAttributeView;
 import java.util.*;
 import java.util.stream.StreamSupport;
 
 public class CensusAnalyser {
-    HashMap<Class,List> map=new HashMap<>();
+    HashMap<Class, List> map = new HashMap<>();
     List<IndiaCensusDAO> censusCSVList = null;
     List<IndiaStateCodeDAO> censusStateCSVList = null;
     static ArrayList stateList;
     static ArrayList censusList;
+    static ArrayList usList;
 
 
     public CensusAnalyser() {
@@ -29,11 +34,11 @@ public class CensusAnalyser {
             Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
             ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
             Iterator<IndiaCensusCSV> csvFileIterator = csvBuilder.getCSVFileIterator(reader, IndiaCensusCSV.class);
-            Iterable<IndiaCensusCSV> censusCSVIterable=() -> csvFileIterator;
-            StreamSupport.stream(censusCSVIterable.spliterator(),false)
+            Iterable<IndiaCensusCSV> censusCSVIterable = () -> csvFileIterator;
+            StreamSupport.stream(censusCSVIterable.spliterator(), false)
                     .forEach(csvState -> censusCSVList.add(new IndiaCensusDAO(csvState)));
-            map.put(IndiaCensusCSV.class,censusCSVList);
-            censusList=new ArrayList(map.get(IndiaCensusCSV.class));
+            map.put(IndiaCensusCSV.class, censusCSVList);
+            censusList = new ArrayList(map.get(IndiaCensusCSV.class));
             return map.get(IndiaCensusCSV.class).size();
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
@@ -52,12 +57,31 @@ public class CensusAnalyser {
             Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
             ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
             Iterator<IndiaStateCodeCSV> csvFileIterator = csvBuilder.getCSVFileIterator(reader, IndiaStateCodeCSV.class);
-            Iterable<IndiaStateCodeCSV> censusCSVIterable=() -> csvFileIterator;
-            StreamSupport.stream(censusCSVIterable.spliterator(),false)
+            Iterable<IndiaStateCodeCSV> censusCSVIterable = () -> csvFileIterator;
+            StreamSupport.stream(censusCSVIterable.spliterator(), false)
                     .forEach(csvStateCode -> censusStateCSVList.add(new IndiaStateCodeDAO(csvStateCode)));
-            map.put(IndiaStateCodeCSV.class,censusStateCSVList);
-            stateList=new ArrayList(map.get(IndiaStateCodeCSV.class));
+            map.put(IndiaStateCodeCSV.class, censusStateCSVList);
+            stateList = new ArrayList(map.get(IndiaStateCodeCSV.class));
             return censusStateCSVList.size();
+        } catch (IOException e) {
+            throw new CensusAnalyserException(e.getMessage(),
+                    CensusAnalyserException.ExecptionType.CENSUS_FILE_PROBLEM);
+        } catch (RuntimeException e) {
+            throw new CensusAnalyserException(e.getMessage(),
+                    CensusAnalyserException.ExecptionType.FILE_TYPE_PROBLEM);
+        } catch (CSVBuilderException e) {
+            throw new CensusAnalyserException(e.getMessage(),
+                    e.type.name());
+        }
+    }
+
+    public int loadUSCensusData(String csvFilePath) throws CensusAnalyserException {
+        try {
+            Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
+            OpenCSVBuilder openCSVBuilder =  CSVBuilderFactory.getCSVBean();
+            map.put(USCensusCSV.class, openCSVBuilder.getCSVList(reader,USCensusCSV.class));
+            usList=new ArrayList(map.get(USCensusCSV.class));
+            return map.get(USCensusCSV.class).size();
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
                     CensusAnalyserException.ExecptionType.CENSUS_FILE_PROBLEM);
