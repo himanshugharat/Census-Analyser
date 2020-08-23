@@ -151,4 +151,25 @@ public class CensusAnalyser {
         String sortedStateJsonCensus = new Gson().toJson(usCensusCSVList);
         return sortedStateJsonCensus;
     }
+
+    public String getPopulationDensityWiseSortedUSCensusData() throws CensusAnalyserException {
+        if (usCensusCSVList == null || usCensusCSVList.size() == 0) {
+            throw new CensusAnalyserException("no data ", CensusAnalyserException.ExecptionType.NO_DATA);
+        }
+        Comparator<USCensusDAO> censusCSVComparator = Comparator.comparing((census -> census.populationDensity));
+        Collections.sort(usCensusCSVList, censusCSVComparator);
+        String sortedStateJsonCensus = new Gson().toJson(usCensusCSVList);
+        return sortedStateJsonCensus;
+
+    }
+
+    public String getAreaWiseSortedUSCensusData() throws CensusAnalyserException {
+        if (usCensusCSVList == null || usCensusCSVList.size() == 0) {
+            throw new CensusAnalyserException("no data ", CensusAnalyserException.ExecptionType.NO_DATA);
+        }
+        Comparator<USCensusDAO> censusCSVComparator = Comparator.comparing((census -> census.area));
+        Collections.sort(usCensusCSVList, censusCSVComparator);
+        String sortedStateJsonCensus = new Gson().toJson(usCensusCSVList);
+        return sortedStateJsonCensus;
+    }
 }

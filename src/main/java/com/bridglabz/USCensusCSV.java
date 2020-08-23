@@ -7,5 +7,9 @@ public class USCensusCSV {
     public String state;
     @CsvBindByName(column = "Population")
     public String population;
+    @CsvBindByName(column = "Population Density")
+    public String populationDensity;
+    @CsvBindByName(column = "Land area")
+    public String area;
 
 }
