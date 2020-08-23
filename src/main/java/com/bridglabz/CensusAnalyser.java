@@ -1,17 +1,14 @@
 package com.bridglabz;
 
 import com.google.gson.Gson;
-import com.opencsv.bean.CsvToBean;
 import customcsv.util.CSVBuilderException;
 import customcsv.util.ICSVBuilder;
 import customcsv.util.OpenCSVBuilder;
-import customcsv.util.OpenCSVBuilder.*;
 
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.nio.file.attribute.UserDefinedFileAttributeView;
 import java.util.*;
 import java.util.stream.StreamSupport;
 
@@ -78,9 +75,9 @@ public class CensusAnalyser {
     public int loadUSCensusData(String csvFilePath) throws CensusAnalyserException {
         try {
             Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
-            OpenCSVBuilder openCSVBuilder =  CSVBuilderFactory.getCSVBean();
-            map.put(USCensusCSV.class, openCSVBuilder.getCSVList(reader,USCensusCSV.class));
-            usList=new ArrayList(map.get(USCensusCSV.class));
+            OpenCSVBuilder openCSVBuilder = CSVBuilderFactory.getCSVBean();
+            map.put(USCensusCSV.class, openCSVBuilder.getCSVList(reader, USCensusCSV.class));
+            usList = new ArrayList(map.get(USCensusCSV.class));
             return map.get(USCensusCSV.class).size();
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),

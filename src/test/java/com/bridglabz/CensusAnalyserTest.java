@@ -176,6 +176,7 @@ public class CensusAnalyserTest {
             Assert.assertEquals(CensusAnalyserException.ExecptionType.NO_DATA, e.type);
         }
     }
+
     @Test
     public void givenUSCsvFile_WhenChecked_ReturnCorrectRecords() {
         try {
