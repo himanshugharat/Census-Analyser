@@ -12,8 +12,12 @@ import java.util.*;
 import java.util.stream.StreamSupport;
 
 public class CensusAnalyser {
+    HashMap<Class,List> map=new HashMap<>();
     List<IndiaCensusDAO> censusCSVList = null;
     List<IndiaStateCodeDAO> censusStateCSVList = null;
+    static ArrayList stateList;
+    static ArrayList censusList;
+
 
     public CensusAnalyser() {
         this.censusCSVList = new ArrayList<IndiaCensusDAO>();
@@ -28,7 +32,9 @@ public class CensusAnalyser {
             Iterable<IndiaCensusCSV> censusCSVIterable=() -> csvFileIterator;
             StreamSupport.stream(censusCSVIterable.spliterator(),false)
                     .forEach(csvState -> censusCSVList.add(new IndiaCensusDAO(csvState)));
-            return censusCSVList.size();
+            map.put(IndiaCensusCSV.class,censusCSVList);
+            censusList=new ArrayList(map.get(IndiaCensusCSV.class));
+            return map.get(IndiaCensusCSV.class).size();
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
                     CensusAnalyserException.ExecptionType.CENSUS_FILE_PROBLEM);
@@ -49,6 +55,8 @@ public class CensusAnalyser {
             Iterable<IndiaStateCodeCSV> censusCSVIterable=() -> csvFileIterator;
             StreamSupport.stream(censusCSVIterable.spliterator(),false)
                     .forEach(csvStateCode -> censusStateCSVList.add(new IndiaStateCodeDAO(csvStateCode)));
+            map.put(IndiaStateCodeCSV.class,censusStateCSVList);
+            stateList=new ArrayList(map.get(IndiaStateCodeCSV.class));
             return censusStateCSVList.size();
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
