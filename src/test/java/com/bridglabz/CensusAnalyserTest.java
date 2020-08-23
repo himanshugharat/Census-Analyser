@@ -165,11 +165,13 @@ public class CensusAnalyserTest {
     }
 
     @Test
-    public void givenIndianCensusData_WhenFileIsEmptyOrNoDataInList_ShouldReturnException()  {
-        try{CensusAnalyser censusAnalyser = new CensusAnalyser();
-        String sortedCensusData = censusAnalyser.getPopulationWiseSortedCensusData();
-        IndiaCensusCSV[] CensusCSV = new Gson().fromJson(sortedCensusData, IndiaCensusCSV[].class);
-    }catch (CensusAnalyserException e){
-            Assert.assertEquals(CensusAnalyserException.ExecptionType.NO_DATA,e.type);
-        }}
+    public void givenIndianCensusData_WhenFileIsEmptyOrNoDataInList_ShouldReturnException() {
+        try {
+            CensusAnalyser censusAnalyser = new CensusAnalyser();
+            String sortedCensusData = censusAnalyser.getPopulationWiseSortedCensusData();
+            IndiaCensusCSV[] CensusCSV = new Gson().fromJson(sortedCensusData, IndiaCensusCSV[].class);
+        } catch (CensusAnalyserException e) {
+            Assert.assertEquals(CensusAnalyserException.ExecptionType.NO_DATA, e.type);
+        }
+    }
 }
