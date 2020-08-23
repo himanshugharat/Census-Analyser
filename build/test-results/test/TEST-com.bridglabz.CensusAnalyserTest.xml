@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridglabz.CensusAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-08-23T08:21:48" hostname="DESKTOP-GL7D8LT" time="0.222">
+<testsuite name="com.bridglabz.CensusAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-08-23T08:30:33" hostname="DESKTOP-GL7D8LT" time="0.264">
   <properties/>
-  <testcase name="givenIndianStateCsvFile_WhenChecked_ReturnCorrectRecords" classname="com.bridglabz.CensusAnalyserTest" time="0.222"/>
+  <testcase name="givenIndianCensusCsvFile_WhenCheked_ReturnCorrectRecords" classname="com.bridglabz.CensusAnalyserTest" time="0.264"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
