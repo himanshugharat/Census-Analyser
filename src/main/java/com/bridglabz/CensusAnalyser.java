@@ -9,25 +9,11 @@ import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 public class CensusAnalyser {
     HashMap<String, CensusDAO> map = new HashMap<>();
-    List<IndiaCensusDAO> censusCSVList = null;
-    List<IndiaStateCodeDAO> censusStateCSVList = null;
-    List<USCensusDAO> usCensusCSVList = null;
-    static ArrayList stateList;
-    static ArrayList censusList;
-    static ArrayList usList;
-
-
-    public CensusAnalyser() {
-        this.censusCSVList = new ArrayList<IndiaCensusDAO>();
-        this.censusStateCSVList = new ArrayList<IndiaStateCodeDAO>();
-        this.usCensusCSVList = new ArrayList<USCensusDAO>();
-    }
 
     public int loadIndiaCensusData(String csvFilePath) throws CensusAnalyserException {
         return this.loadCensusData(csvFilePath, IndiaCensusCSV.class);
@@ -168,7 +154,6 @@ public class CensusAnalyser {
         Collections.sort(censusDAOS, censusCSVComparator);
         String sortedStateJsonCensus = new Gson().toJson(censusDAOS);
         return sortedStateJsonCensus;
-
     }
 
     public String getAreaWiseSortedUSCensusData() throws CensusAnalyserException {
