@@ -214,4 +214,17 @@ public class CensusAnalyserTest {
         Assert.assertEquals("102269.23", CensusCSV[50].area);
     }
 
+    @Test
+    public void givenUSAndIndiaCensus_WhenSorted_ShouldReturnName() throws CensusAnalyserException {
+        CensusAnalyser censusAnalyser = new CensusAnalyser();
+        censusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
+        censusAnalyser.loadUSCensusData(US_CENSUS_CSV_FILE_PATH);
+        String sortedIndianData = censusAnalyser.getPopulationWiseSortedCensusData();
+        String sortedUSData = censusAnalyser.getStateWiseSortedCensusData();
+        USCensusCSV[] CensusUsCSV = new Gson().fromJson(sortedUSData, USCensusCSV[].class);
+        IndiaCensusCSV[] CensusCSV = new Gson().fromJson(sortedIndianData, IndiaCensusCSV[].class);
+        Assert.assertEquals("Wyoming", CensusUsCSV[CensusUsCSV.length - 1].state);
+        Assert.assertEquals("Uttar Pradesh", CensusCSV[CensusCSV.length - 1].state);
+
+    }
 }
