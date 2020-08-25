@@ -15,36 +15,17 @@ import java.util.stream.StreamSupport;
 public class CensusAnalyser {
     Map<String, CensusDAO> map = new HashMap<>();
 
-    public int loadIndiaCensusData(String csvFilePath) throws CensusAnalyserException {
-        map= new CensusLoader().loadCensusData(csvFilePath, IndiaCensusCSV.class);
+    public int loadIndiaCensusData(String... csvFilePath) throws CensusAnalyserException {
+        map = new CensusLoader().loadCensusData(IndiaCensusCSV.class, csvFilePath);
         return map.size();
     }
 
     public int loadUSCensusData(String csvFilePath) throws CensusAnalyserException {
-        map= new CensusLoader().loadCensusData(csvFilePath, USCensusCSV.class);
+        map = new CensusLoader().loadCensusData(USCensusCSV.class, csvFilePath);
         return map.size();
     }
 
-    public int loadIndiaStateData(String csvFilePath) throws CensusAnalyserException {
-        try {
-            Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
-            ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
-            Iterator<IndiaStateCodeCSV> csvFileIterator = csvBuilder.getCSVFileIterator(reader, IndiaStateCodeCSV.class);
-            Iterable<IndiaStateCodeCSV> censusCSVIterable = () -> csvFileIterator;
-            StreamSupport.stream(censusCSVIterable.spliterator(), false)
-                    .forEach(csvState -> map.put(csvState.stateCode, new CensusDAO(csvState)));
-            return map.size();
-        } catch (IOException e) {
-            throw new CensusAnalyserException(e.getMessage(),
-                    CensusAnalyserException.ExecptionType.CENSUS_FILE_PROBLEM);
-        } catch (RuntimeException e) {
-            throw new CensusAnalyserException(e.getMessage(),
-                    CensusAnalyserException.ExecptionType.FILE_TYPE_PROBLEM);
-        } catch (CSVBuilderException e) {
-            throw new CensusAnalyserException(e.getMessage(),
-                    e.type.name());
-        }
-    }
+
 
     public String getStateWiseSortedCensusData() throws CensusAnalyserException {
         if (map == null || map.size() == 0) {
