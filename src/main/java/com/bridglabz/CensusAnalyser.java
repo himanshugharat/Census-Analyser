@@ -17,19 +17,27 @@ public class CensusAnalyser {
 
     public int loadIndiaCensusData(String csvFilePath) throws CensusAnalyserException {
         return this.loadCensusData(csvFilePath, IndiaCensusCSV.class);
+    }
 
+    public int loadUSCensusData(String csvFilePath) throws CensusAnalyserException {
+        return this.loadCensusData(csvFilePath, USCensusCSV.class);
     }
 
     private <E> int loadCensusData(String csvFilePath, Class<E> CensusCSVClass) throws CensusAnalyserException {
         try {
             Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
             ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
-            Iterator<E> csvFileIterator = csvBuilder.getCSVFileIterator(reader, IndiaCensusCSV.class);
+            Iterator<E> csvFileIterator = csvBuilder.getCSVFileIterator(reader, CensusCSVClass);
             Iterable<E> censusCSVIterable = () -> csvFileIterator;
-            StreamSupport.stream(censusCSVIterable.spliterator(), false)
-                    .map(IndiaCensusCSV.class::cast)
-                    .forEach(csvState -> map.put(csvState.state, new CensusDAO(csvState)));
-
+            if (CensusCSVClass.getName().equals("com.bridglabz.IndiaCensusCSV")) {
+                StreamSupport.stream(censusCSVIterable.spliterator(), false)
+                        .map(IndiaCensusCSV.class::cast)
+                        .forEach(csvState -> map.put(csvState.state, new CensusDAO(csvState)));
+            } else if (CensusCSVClass.getName().equals("com.bridglabz.USCensusCSV")) {
+                StreamSupport.stream(censusCSVIterable.spliterator(), false)
+                        .map(USCensusCSV.class::cast)
+                        .forEach(csvState -> map.put(csvState.state, new CensusDAO(csvState)));
+            }
             return map.size();
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
@@ -64,26 +72,6 @@ public class CensusAnalyser {
         }
     }
 
-    public int loadUSCensusData(String csvFilePath) throws CensusAnalyserException {
-        try {
-            Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
-            ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
-            Iterator<USCensusCSV> csvFileIterator = csvBuilder.getCSVFileIterator(reader, USCensusCSV.class);
-            Iterable<USCensusCSV> censusCSVIterable = () -> csvFileIterator;
-            StreamSupport.stream(censusCSVIterable.spliterator(), false)
-                    .forEach(csvState -> map.put(csvState.state, new CensusDAO(csvState)));
-            return map.size();
-        } catch (IOException e) {
-            throw new CensusAnalyserException(e.getMessage(),
-                    CensusAnalyserException.ExecptionType.CENSUS_FILE_PROBLEM);
-        } catch (RuntimeException e) {
-            throw new CensusAnalyserException(e.getMessage(),
-                    CensusAnalyserException.ExecptionType.FILE_TYPE_PROBLEM);
-        } catch (CSVBuilderException e) {
-            throw new CensusAnalyserException(e.getMessage(),
-                    e.type.name());
-        }
-    }
 
     private <E> int getCount(Iterator<E> iterator) {
         Iterable<E> csvIterable = () -> iterator;
