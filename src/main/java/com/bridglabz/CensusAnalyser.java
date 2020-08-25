@@ -1,31 +1,17 @@
 package com.bridglabz;
 
 import com.google.gson.Gson;
-import customcsv.util.CSVBuilderException;
-import customcsv.util.ICSVBuilder;
 
-import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 public class CensusAnalyser {
     Map<String, CensusDAO> map = new HashMap<>();
 
-    public int loadIndiaCensusData(String... csvFilePath) throws CensusAnalyserException {
-        map = new CensusLoader().loadCensusData(IndiaCensusCSV.class, csvFilePath);
+    public int loadCensusData(Country country, String... csvFilePath) throws CensusAnalyserException {
+        map = new CensusLoader().loadCensusData(country, csvFilePath);
         return map.size();
     }
-
-    public int loadUSCensusData(String csvFilePath) throws CensusAnalyserException {
-        map = new CensusLoader().loadCensusData(USCensusCSV.class, csvFilePath);
-        return map.size();
-    }
-
-
 
     public String getStateWiseSortedCensusData() throws CensusAnalyserException {
         if (map == null || map.size() == 0) {
@@ -103,4 +89,6 @@ public class CensusAnalyser {
         String sortedStateJsonCensus = new Gson().toJson(censusDAOS);
         return sortedStateJsonCensus;
     }
+
+    public enum Country {INDIA, US;}
 }

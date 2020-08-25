@@ -15,7 +15,7 @@ import java.util.stream.StreamSupport;
 public class CensusLoader {
     HashMap<String, CensusDAO> map = new HashMap<>();
 
-    public <E> Map loadCensusData(Class<E> CensusCSVClass, String... csvFilePath) throws CensusAnalyserException {
+    private <E> Map loadCensusData(Class<E> CensusCSVClass, String... csvFilePath) throws CensusAnalyserException {
         try {
             Reader reader = Files.newBufferedReader(Paths.get(csvFilePath[0]));
             ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
@@ -30,8 +30,8 @@ public class CensusLoader {
                         .map(USCensusCSV.class::cast)
                         .forEach(csvState -> map.put(csvState.state, new CensusDAO(csvState)));
             }
-            if(csvFilePath.length ==1)return map;
-            this.loadIndiaStateData(map,csvFilePath[1]);
+            if (csvFilePath.length == 1) return map;
+            this.loadIndiaStateData(map, csvFilePath[1]);
             return map;
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
@@ -45,7 +45,7 @@ public class CensusLoader {
         }
     }
 
-    public int loadIndiaStateData(Map map,String csvFilePath) throws CensusAnalyserException {
+    public int loadIndiaStateData(Map map, String csvFilePath) throws CensusAnalyserException {
         try {
             Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
             ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
@@ -63,6 +63,16 @@ public class CensusLoader {
         } catch (CSVBuilderException e) {
             throw new CensusAnalyserException(e.getMessage(),
                     e.type.name());
+        }
+    }
+
+    public Map<String, CensusDAO> loadCensusData(CensusAnalyser.Country country, String... csvFilePath) throws CensusAnalyserException {
+        if (country.equals(CensusAnalyser.Country.INDIA)) {
+            return this.loadCensusData(IndiaCensusCSV.class, csvFilePath);
+        } else if (country.equals(CensusAnalyser.Country.US)) {
+            return this.loadCensusData(USCensusCSV.class, csvFilePath);
+        } else {
+            throw new CensusAnalyserException("Incorrect", CensusAnalyserException.ExecptionType.INVALID_COUNTRY);
         }
     }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridglabz.CensusAnalyserTest" tests="20" skipped="0" failures="5" errors="0" timestamp="2020-08-25T08:39:48" hostname="DESKTOP-GL7D8LT" time="1.148">
+<testsuite name="com.bridglabz.CensusAnalyserTest" tests="20" skipped="0" failures="5" errors="0" timestamp="2020-08-25T09:15:21" hostname="DESKTOP-GL7D8LT" time="1.171">
   <properties/>
-  <testcase name="givenIndianCensusCsvFile_WhenCheked_ReturnCorrectRecords" classname="com.bridglabz.CensusAnalyserTest" time="0.328"/>
-  <testcase name="givenIndiaStateData_WithWrongFile_ShouldThrowException" classname="com.bridglabz.CensusAnalyserTest" time="0.01"/>
-  <testcase name="givenIndiaStateData_WithWrongDelimiter_ShouldThrowException" classname="com.bridglabz.CensusAnalyserTest" time="0.039">
+  <testcase name="givenIndianCensusCsvFile_WhenCheked_ReturnCorrectRecords" classname="com.bridglabz.CensusAnalyserTest" time="0.366"/>
+  <testcase name="givenIndiaStateData_WithWrongFile_ShouldThrowException" classname="com.bridglabz.CensusAnalyserTest" time="0.011"/>
+  <testcase name="givenIndiaStateData_WithWrongDelimiter_ShouldThrowException" classname="com.bridglabz.CensusAnalyserTest" time="0.027">
     <failure message="java.lang.AssertionError: expected:&lt;FILE_HEADER_OR_DELIMITER_PROBLEM&gt; but was:&lt;FILE_TYPE_PROBLEM&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;FILE_HEADER_OR_DELIMITER_PROBLEM&gt; but was:&lt;FILE_TYPE_PROBLEM&gt;
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
@@ -59,8 +59,8 @@
 	at java.base/java.lang.Thread.run(Thread.java:834)
 </failure>
   </testcase>
-  <testcase name="givenIndianCensusData_WhenSortedOnAreaPerSQKM_ShouldReturnSortedResult" classname="com.bridglabz.CensusAnalyserTest" time="0.181"/>
-  <testcase name="givenIndianCensusData_WhenSortedOnPopulation_ShouldReturnSortedResult" classname="com.bridglabz.CensusAnalyserTest" time="0.062"/>
+  <testcase name="givenIndianCensusData_WhenSortedOnAreaPerSQKM_ShouldReturnSortedResult" classname="com.bridglabz.CensusAnalyserTest" time="0.174"/>
+  <testcase name="givenIndianCensusData_WhenSortedOnPopulation_ShouldReturnSortedResult" classname="com.bridglabz.CensusAnalyserTest" time="0.067"/>
   <testcase name="givenIndiaCensusData_WithWrongDelimiter_ShouldThrowException" classname="com.bridglabz.CensusAnalyserTest" time="0.002">
     <failure message="java.lang.AssertionError: expected:&lt;FILE_HEADER_OR_DELIMITER_PROBLEM&gt; but was:&lt;FILE_TYPE_PROBLEM&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;FILE_HEADER_OR_DELIMITER_PROBLEM&gt; but was:&lt;FILE_TYPE_PROBLEM&gt;
 	at org.junit.Assert.fail(Assert.java:88)
@@ -117,10 +117,10 @@
 	at java.base/java.lang.Thread.run(Thread.java:834)
 </failure>
   </testcase>
-  <testcase name="givenUSCensusData_WhenSortedOnPopulation_ShouldReturnSortedResult" classname="com.bridglabz.CensusAnalyserTest" time="0.108"/>
-  <testcase name="givenIndiaStateData_WithWrongType_ShouldThrowException" classname="com.bridglabz.CensusAnalyserTest" time="0.002"/>
-  <testcase name="givenIndianCensusData_WhenSortedOnState_ShouldReturnSortedResult" classname="com.bridglabz.CensusAnalyserTest" time="0.048"/>
-  <testcase name="givenUSCensusData_WhenSortedOnPopulationDensity_ShouldReturnSortedResult" classname="com.bridglabz.CensusAnalyserTest" time="0.063"/>
+  <testcase name="givenUSCensusData_WhenSortedOnPopulation_ShouldReturnSortedResult" classname="com.bridglabz.CensusAnalyserTest" time="0.098"/>
+  <testcase name="givenIndiaStateData_WithWrongType_ShouldThrowException" classname="com.bridglabz.CensusAnalyserTest" time="0.001"/>
+  <testcase name="givenIndianCensusData_WhenSortedOnState_ShouldReturnSortedResult" classname="com.bridglabz.CensusAnalyserTest" time="0.044"/>
+  <testcase name="givenUSCensusData_WhenSortedOnPopulationDensity_ShouldReturnSortedResult" classname="com.bridglabz.CensusAnalyserTest" time="0.085"/>
   <testcase name="givenIndianStateCsvFile_WhenChecked_ReturnCorrectRecords" classname="com.bridglabz.CensusAnalyserTest" time="0.002"/>
   <testcase name="givenIndianCensusData_WhenSortedOnDensityPerKm_ShouldReturnSortedResult" classname="com.bridglabz.CensusAnalyserTest" time="0.036"/>
   <testcase name="givenUSCsvFile_WhenChecked_ReturnCorrectRecords" classname="com.bridglabz.CensusAnalyserTest" time="0.052"/>
@@ -236,11 +236,11 @@
 	at java.base/java.lang.Thread.run(Thread.java:834)
 </failure>
   </testcase>
-  <testcase name="givenUSAndIndiaCensus_WhenSorted_ShouldReturnName" classname="com.bridglabz.CensusAnalyserTest" time="0.129"/>
-  <testcase name="givenIndianCensusData_WhenFileIsEmptyOrNoDataInList_ShouldReturnException" classname="com.bridglabz.CensusAnalyserTest" time="0.0"/>
-  <testcase name="givenIndiaCensusData_WithWrongFile_ShouldThrowException" classname="com.bridglabz.CensusAnalyserTest" time="0.0"/>
-  <testcase name="givenIndiaCensusData_WithWrongType_ShouldThrowException" classname="com.bridglabz.CensusAnalyserTest" time="0.001"/>
-  <testcase name="givenUSCensusData_WhenSortedOnArea_ShouldReturnSortedResult" classname="com.bridglabz.CensusAnalyserTest" time="0.069">
+  <testcase name="givenUSAndIndiaCensus_WhenSorted_ShouldReturnName" classname="com.bridglabz.CensusAnalyserTest" time="0.09"/>
+  <testcase name="givenIndianCensusData_WhenFileIsEmptyOrNoDataInList_ShouldReturnException" classname="com.bridglabz.CensusAnalyserTest" time="0.002"/>
+  <testcase name="givenIndiaCensusData_WithWrongFile_ShouldThrowException" classname="com.bridglabz.CensusAnalyserTest" time="0.002"/>
+  <testcase name="givenIndiaCensusData_WithWrongType_ShouldThrowException" classname="com.bridglabz.CensusAnalyserTest" time="0.002"/>
+  <testcase name="givenUSCensusData_WhenSortedOnArea_ShouldReturnSortedResult" classname="com.bridglabz.CensusAnalyserTest" time="0.071">
     <failure message="java.lang.AssertionError: expected:&lt;102269.23&gt; but was:&lt;null&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;102269.23&gt; but was:&lt;null&gt;
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
