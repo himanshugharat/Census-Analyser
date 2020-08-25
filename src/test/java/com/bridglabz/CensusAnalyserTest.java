@@ -217,10 +217,11 @@ public class CensusAnalyserTest {
     @Test
     public void givenUSAndIndiaCensus_WhenSorted_ShouldReturnName() throws CensusAnalyserException {
         CensusAnalyser censusAnalyser = new CensusAnalyser();
+        CensusAnalyser censusAnalyser1 = new CensusAnalyser();
         censusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
-        censusAnalyser.loadUSCensusData(US_CENSUS_CSV_FILE_PATH);
+        censusAnalyser1.loadUSCensusData(US_CENSUS_CSV_FILE_PATH);
         String sortedIndianData = censusAnalyser.getPopulationWiseSortedCensusData();
-        String sortedUSData = censusAnalyser.getStateWiseSortedCensusData();
+        String sortedUSData = censusAnalyser1.getStateWiseSortedCensusData();
         USCensusCSV[] CensusUsCSV = new Gson().fromJson(sortedUSData, USCensusCSV[].class);
         IndiaCensusCSV[] CensusCSV = new Gson().fromJson(sortedIndianData, IndiaCensusCSV[].class);
         Assert.assertEquals("Wyoming", CensusUsCSV[CensusUsCSV.length - 1].state);
