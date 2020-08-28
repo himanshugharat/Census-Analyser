@@ -11,5 +11,4 @@ public class USCensusCSV {
     public String populationDensity;
     @CsvBindByName(column = "Land area")
     public String area;
-
 }

@@ -4,7 +4,6 @@ public class CensusAnalyserException extends Exception {
     enum ExecptionType {
         CENSUS_FILE_PROBLEM, FILE_TYPE_PROBLEM, FILE_HEADER_OR_DELIMITER_PROBLEM, NO_DATA,INVALID_COUNTRY;
     }
-
     ExecptionType type;
 
     public CensusAnalyserException(String message, String name) {
@@ -21,5 +20,4 @@ public class CensusAnalyserException extends Exception {
         super(message, cause);
         this.type = type;
     }
-
 }
