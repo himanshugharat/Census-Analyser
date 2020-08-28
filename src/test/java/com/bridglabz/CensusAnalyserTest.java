@@ -20,7 +20,6 @@ public class CensusAnalyserTest {
             int numberOfRecords = censusAanlyser.loadCensusData(CensusAnalyser.Country.INDIA, INDIA_CENSUS_CSV_FILE_PATH, US_CENSUS_CSV_FILE_PATH);
             Assert.assertEquals(30, numberOfRecords);
         } catch (CensusAnalyserException e) {
-            System.out.println("check file type");
         }
     }
 
@@ -79,7 +78,6 @@ public class CensusAnalyserTest {
             int numberOfRecords = censusAanlyser.loadCensusData(CensusAnalyser.Country.INDIA, INDIA_STATE_CSV_FILE_PATH);
             Assert.assertEquals(37, numberOfRecords);
         } catch (CensusAnalyserException e) {
-            System.out.println("check the file");
         }
     }
 
@@ -185,7 +183,6 @@ public class CensusAnalyserTest {
             int numberOfRecords = censusAanlyser.loadCensusData(CensusAnalyser.Country.US, US_CENSUS_CSV_FILE_PATH);
             Assert.assertEquals(51, numberOfRecords);
         } catch (CensusAnalyserException e) {
-            System.out.println("check the file");
         }
     }
 
@@ -223,7 +220,7 @@ public class CensusAnalyserTest {
         censusAnalyser.loadCensusData(CensusAnalyser.Country.INDIA, INDIA_CENSUS_CSV_FILE_PATH);
         censusAnalyser1.loadCensusData(CensusAnalyser.Country.US, US_CENSUS_CSV_FILE_PATH);
         String sortedIndianData = censusAnalyser.getPopulationWiseSortedCensusData();
-        String sortedUSData = censusAnalyser1.getStateWiseSortedCensusData();
+        String sortedUSData = censusAnalyser1.getPopulationWiseSortedUSCensusData();
         USCensusCSV[] CensusUsCSV = new Gson().fromJson(sortedUSData, USCensusCSV[].class);
         IndiaCensusCSV[] CensusCSV = new Gson().fromJson(sortedIndianData, IndiaCensusCSV[].class);
         Assert.assertEquals("Wyoming", CensusUsCSV[CensusUsCSV.length - 1].state);
