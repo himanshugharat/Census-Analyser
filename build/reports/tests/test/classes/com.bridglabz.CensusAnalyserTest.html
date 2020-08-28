@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">1.136s</div>
+<div class="counter">1.489s</div>
 <p>duration</p>
 </div>
 </td>
@@ -78,7 +78,7 @@
 	at org.junit.Assert.failNotEquals(Assert.java:834)
 	at org.junit.Assert.assertEquals(Assert.java:118)
 	at org.junit.Assert.assertEquals(Assert.java:144)
-	at com.bridglabz.CensusAnalyserTest.givenIndiaCensusData_WithWrongDelimiter_ShouldThrowException(CensusAnalyserTest.java:59)
+	at com.bridglabz.CensusAnalyserTest.givenIndiaCensusData_WithWrongDelimiter_ShouldThrowException(CensusAnalyserTest.java:58)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -138,7 +138,7 @@
 	at org.junit.Assert.failNotEquals(Assert.java:834)
 	at org.junit.Assert.assertEquals(Assert.java:118)
 	at org.junit.Assert.assertEquals(Assert.java:144)
-	at com.bridglabz.CensusAnalyserTest.givenIndiaCensusData_WithWrongHeader_ShouldThrowException(CensusAnalyserTest.java:71)
+	at com.bridglabz.CensusAnalyserTest.givenIndiaCensusData_WithWrongHeader_ShouldThrowException(CensusAnalyserTest.java:70)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -198,7 +198,7 @@
 	at org.junit.Assert.failNotEquals(Assert.java:834)
 	at org.junit.Assert.assertEquals(Assert.java:118)
 	at org.junit.Assert.assertEquals(Assert.java:144)
-	at com.bridglabz.CensusAnalyserTest.givenIndiaStateData_WithWrongDelimiter_ShouldThrowException(CensusAnalyserTest.java:117)
+	at com.bridglabz.CensusAnalyserTest.givenIndiaStateData_WithWrongDelimiter_ShouldThrowException(CensusAnalyserTest.java:116)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -258,7 +258,7 @@
 	at org.junit.Assert.failNotEquals(Assert.java:834)
 	at org.junit.Assert.assertEquals(Assert.java:118)
 	at org.junit.Assert.assertEquals(Assert.java:144)
-	at com.bridglabz.CensusAnalyserTest.givenIndiaStateData_WithWrongHeader_ShouldThrowException(CensusAnalyserTest.java:129)
+	at com.bridglabz.CensusAnalyserTest.givenIndiaStateData_WithWrongHeader_ShouldThrowException(CensusAnalyserTest.java:128)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -310,15 +310,15 @@
 </span>
 </div>
 <div class="test">
-<a name="givenUSCensusData_WhenSortedOnArea_ShouldReturnSortedResult"></a>
-<h3 class="failures">givenUSCensusData_WhenSortedOnArea_ShouldReturnSortedResult</h3>
+<a name="givenIndianCensusData_WhenSortedOnDensityPerKm_ShouldReturnSortedResult"></a>
+<h3 class="failures">givenIndianCensusData_WhenSortedOnDensityPerKm_ShouldReturnSortedResult</h3>
 <span class="code">
-<pre>java.lang.AssertionError: expected:&lt;102269.23&gt; but was:&lt;null&gt;
+<pre>java.lang.AssertionError: expected:&lt;50&gt; but was:&lt;Arunachal Pradesh&gt;
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
 	at org.junit.Assert.assertEquals(Assert.java:118)
 	at org.junit.Assert.assertEquals(Assert.java:144)
-	at com.bridglabz.CensusAnalyserTest.givenUSCensusData_WhenSortedOnArea_ShouldReturnSortedResult(CensusAnalyserTest.java:214)
+	at com.bridglabz.CensusAnalyserTest.givenIndianCensusData_WhenSortedOnDensityPerKm_ShouldReturnSortedResult(CensusAnalyserTest.java:156)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -382,17 +382,17 @@
 </thead>
 <tr>
 <td class="failures">givenIndiaCensusData_WithWrongDelimiter_ShouldThrowException</td>
-<td class="failures">0.002s</td>
+<td class="failures">0.003s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
 <td class="success">givenIndiaCensusData_WithWrongFile_ShouldThrowException</td>
-<td class="success">0.002s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="failures">givenIndiaCensusData_WithWrongHeader_ShouldThrowException</td>
-<td class="failures">0.002s</td>
+<td class="failures">0.006s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
@@ -402,82 +402,82 @@
 </tr>
 <tr>
 <td class="failures">givenIndiaStateData_WithWrongDelimiter_ShouldThrowException</td>
-<td class="failures">0.027s</td>
+<td class="failures">0.040s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
 <td class="success">givenIndiaStateData_WithWrongFile_ShouldThrowException</td>
-<td class="success">0.011s</td>
+<td class="success">0.010s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="failures">givenIndiaStateData_WithWrongHeader_ShouldThrowException</td>
-<td class="failures">0.002s</td>
+<td class="failures">0.001s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
 <td class="success">givenIndiaStateData_WithWrongType_ShouldThrowException</td>
-<td class="success">0.001s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenIndianCensusCsvFile_WhenCheked_ReturnCorrectRecords</td>
-<td class="success">0.366s</td>
+<td class="success">0.515s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenIndianCensusData_WhenFileIsEmptyOrNoDataInList_ShouldReturnException</td>
-<td class="success">0.002s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenIndianCensusData_WhenSortedOnAreaPerSQKM_ShouldReturnSortedResult</td>
-<td class="success">0.174s</td>
+<td class="success">0.211s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">givenIndianCensusData_WhenSortedOnDensityPerKm_ShouldReturnSortedResult</td>
-<td class="success">0.036s</td>
-<td class="success">passed</td>
+<td class="failures">givenIndianCensusData_WhenSortedOnDensityPerKm_ShouldReturnSortedResult</td>
+<td class="failures">0.045s</td>
+<td class="failures">failed</td>
 </tr>
 <tr>
 <td class="success">givenIndianCensusData_WhenSortedOnPopulation_ShouldReturnSortedResult</td>
-<td class="success">0.067s</td>
+<td class="success">0.072s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenIndianCensusData_WhenSortedOnState_ShouldReturnSortedResult</td>
-<td class="success">0.044s</td>
+<td class="success">0.052s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenIndianStateCsvFile_WhenChecked_ReturnCorrectRecords</td>
-<td class="success">0.002s</td>
+<td class="success">0.040s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenUSAndIndiaCensus_WhenSorted_ShouldReturnName</td>
-<td class="success">0.090s</td>
+<td class="success">0.122s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="failures">givenUSCensusData_WhenSortedOnArea_ShouldReturnSortedResult</td>
-<td class="failures">0.071s</td>
-<td class="failures">failed</td>
+<td class="success">givenUSCensusData_WhenSortedOnArea_ShouldReturnSortedResult</td>
+<td class="success">0.111s</td>
+<td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenUSCensusData_WhenSortedOnPopulationDensity_ShouldReturnSortedResult</td>
-<td class="success">0.085s</td>
+<td class="success">0.083s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenUSCensusData_WhenSortedOnPopulation_ShouldReturnSortedResult</td>
-<td class="success">0.098s</td>
+<td class="success">0.104s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenUSCsvFile_WhenChecked_ReturnCorrectRecords</td>
-<td class="success">0.052s</td>
+<td class="success">0.069s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -490,7 +490,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 6.3</a> at 25-Aug-2020, 4:15:22 AM</p>
+<a href="http://www.gradle.org">Gradle 6.3</a> at 28-Aug-2020, 1:13:19 AM</p>
 </div>
 </div>
 </body>
